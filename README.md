@@ -59,3 +59,15 @@ vec arma_setdiff(arma::vec x, arma::vec y){
 }
 
 ```
+
+## 3. rgamma function
+
+```
+
+double R::rgamma	(	double 	a,
+double 	scl
+)
+```
+In the above definition, the first paramter is actually shape.
+
+A good reference [usage of rgamma generator]: url "http://gallery.rcpp.org/articles/gibbs-sampler/"
