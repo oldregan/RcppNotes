@@ -24,3 +24,38 @@ conv_to< type >::from( X )
 >Conversion between std::vector and Armadillo matrices/vectors is also possible
 
 >Conversion of a mat object into colvec, rowvec or std::vector is possible if the object can be interpreted as a vector
+
+
+## 2. setdiff function by Armadillo
+
+RcppArmadillo package itself doesn't implement setdiff function between two vectors. A robust solution is list as below:
+
+```
+
+vec arma_setdiff(arma::vec x, arma::vec y){
+  vec x1 = arma::unique(x);
+  vec y1 = arma::unique(y);
+  //Rcout<<"x1:"<<x1<<endl;
+  //Rcout<<"y1"<<y1<<endl;
+  vec x_ret = x1;
+  arma::uvec q1;
+
+   if(x.is_empty() && y.is_empty()){
+     return(x);
+   }else{
+     for (size_t j = 0; j < y1.n_elem; j++) {
+       if(x_ret.is_empty()){
+         break;
+       }else{
+         q1 = arma::find(x_ret == y1(j));
+         if(q1.is_empty()){
+           break;
+         }
+       }
+       x_ret.shed_row(q1(0));
+     }
+     return(x_ret);
+   }
+}
+
+```
