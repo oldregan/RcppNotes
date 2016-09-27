@@ -71,3 +71,16 @@ double 	scl
 In the above definition, the first paramter is actually shape.
 
 A good reference [usage of rgamma generator]: url "http://gallery.rcpp.org/articles/gibbs-sampler/"
+
+
+## 4. debug Rcpp and RcppArmadillo program
+
+[a good reference see here(english)](http://kevinushey.github.io/blog/2015/04/13/debugging-with-lldb/)
+
+## 5. size() function
+
+size member function behave differently in Rcpp and RcppArmadillo package.
+
+1. Rcpp: `.size()` function is a member function of `NumericalVector`. It returns the length of the vector and return type is integer
+2. RcppArmadillo: If we want to get the length of `vec`, we should use its attribute `n_elem`
+3. RcppArmadillo: `size` function return the dimension not the vector length
