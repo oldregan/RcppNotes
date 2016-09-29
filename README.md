@@ -84,3 +84,10 @@ size member function behave differently in Rcpp and RcppArmadillo package.
 1. Rcpp: `.size()` function is a member function of `NumericalVector`. It returns the length of the vector and return type is integer
 2. RcppArmadillo: If we want to get the length of `vec`, we should use its attribute `n_elem`
 3. RcppArmadillo: `size` function return the dimension not the vector length
+
+## 6. mix Roxygen and Rcpp
+[Adding Rcpp to an existing R package documented with roxygen2](https://ironholds.org/blog/adding-rcpp-to-an-existing-r-package-documented-with-roxygen2/)
+
+## 7. generate pdf manual
+
+`R CMD Rd2pdf packagename`
